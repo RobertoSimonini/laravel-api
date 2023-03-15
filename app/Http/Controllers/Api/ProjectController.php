@@ -15,6 +15,10 @@ class ProjectController extends Controller
     {
         $projects =  Project::all();
 
+        foreach ($projects as $project) {
+            if ($project->image) $project->image = url('storage/' . $project->image);
+        }
+
         return response()->json($projects);
     }
 
